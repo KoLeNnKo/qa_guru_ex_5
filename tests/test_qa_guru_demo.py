@@ -29,11 +29,13 @@ def test_demoqa():
 
     browser.element('#currentAddress').type('Москва, Вешняки 18')
 
-    browser.element('#state').click()
-    browser.element('[id^="react-select-3-option-"]').element_by(have.text('NCR')).click()
+    browser.driver.execute_script("arguments[0].scrollIntoView(true);", browser.element('#state .css-1hwfws3').locate())
+    browser.element('#state .css-1hwfws3').click()
+    browser.all('[id^="react-select-3-option-"]').by(have.text('NCR')).first.click()
 
-    browser.element('#city').click()
-    browser.element('[id^="react-select-4-option-"]').element_by(have.text('Noida')).click()
+    browser.driver.execute_script("arguments[0].scrollIntoView(true);", browser.element('#city .css-1hwfws3').locate())
+    browser.element('#city .css-1hwfws3').click()
+    browser.all('[id^="react-select-4-option-"]').by(have.text('Noida')).first.click()
 
     browser.element('#submit').click()
 
@@ -47,7 +49,7 @@ def test_demoqa():
         '20 February,2002',
         'English',
         'Sports',
-        'test.jpg',
+        '134501.png',
         'Москва, Вешняки 18',
         'NCR Noida'
     ))
